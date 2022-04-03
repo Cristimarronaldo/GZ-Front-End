@@ -1,27 +1,30 @@
-# Gazinfrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+- Back-End (Asp.net core e EF)
+  - Dominio (Gazin.Dominio)-> Regra de negocio 
+  - Infra   (Gazin.Infra)  -> Estrutura para gravar os dados no banco de dados
+  - Serviço (Gazin.API)    -> API Rest
+  
+- Banco de dados Sql Server
 
-## Development server
+Dentro do projeto (Back-End) tem o script para criação do banco de dados e tabelas Script.sql Dentro do projeto Back-End.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+SPA - Angular
+- Para configurar o URL da API é usando environment do angular
 
-## Build
+Configurar o banco de dados da API (Projeto Gazin.API), foi usado appsettings.Production.json e appsettings.Development.json que esta dentro da pasta src/Servico
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+- Niveis 
+  - Precisar preencher a descrição de Nivel.
+  - Precisar ter entre 3 a 100 caracteres.
+  - Não pode cadastrar ou alterar uma descrição de nivel já existente na base de dados.
+  - Na exclusão de nível não será possivel excluir um nível vinculado ao um ou mais desenvolvedor.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Desenvolvedor
+  - O campo nome do desenvolvedor precisa está preenchido.
+  - No nome precisa ter entre 3 a 100 caracteres.
+  - O código nível precisa está preenchido.
+  - Sexo precisa está preenchindo.
+  - Para gravar o desenvolvedor precisa ser maior ou igual 18 anos.
