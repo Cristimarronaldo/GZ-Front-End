@@ -1,0 +1,38 @@
+<div class="container main-container">
+
+
+  <h1>Editar Nível</h1>
+  <hr>
+  <form novalidate="novalidate" (ngSubmit)="editarNiveis()" [formGroup]="niveisForm">
+
+      <div class="alert alert-danger" *ngIf="errors.length > 0">
+          <h3 id="msgRetorno">Opa! Ocorreu erros:</h3>
+          <ul>
+              <li *ngFor="let error of errors">{{ error }}</li>
+          </ul>
+      </div>
+
+      <input type="hidden" id="id" name="id" formControlName="id" value="">
+
+      <div class="form-row">
+          <div class="form-group col-md-6">
+
+              <div>
+                  <label class="control-label">Nível</label>
+                  <div>
+                      <input class="form-control" id="nivel" type="text" placeholder="Nivel (requerido)" formControlName="nivel" [ngClass]="{'is-invalid': displayMessage['nivel'] }" />
+                      <span class="text-danger" *ngIf="displayMessage['nivel']">
+                          <p [innerHTML]="displayMessage['nivel']"></p>
+                      </span>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <input type="submit" value="Editar" class="btn btn-primary">&nbsp;
+          <a class="btn btn-info" [routerLink]="['/niveis/listaniveis']">Voltar</a>
+      </div>
+  </form>
+
+</div>

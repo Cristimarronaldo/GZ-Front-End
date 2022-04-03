@@ -1,0 +1,85 @@
+<div class="container main-container">
+
+  <h1>Novo Desenvolvedor</h1>
+
+  <hr>
+  <div class="row">
+      <div class="col-md-10">
+          <form novalidate="novalidate" (ngSubmit)="editarDesenvolvedor()" [formGroup]="desenvolvedorForm">
+
+              <div class="alert alert-danger" *ngIf="errors.length > 0">
+                  <h3 id="msgRetorno">Opa! Ocorreu erro(s):</h3>
+                  <ul>
+                      <li *ngFor="let error of errors">{{ error }}</li>
+                  </ul>
+              </div>
+
+              <input type="hidden" id="id" formControlName="id" />
+              <div class="form-group">
+                  <label class="control-label">Nome</label>
+                  <div>
+                      <input class="form-control" id="nome" type="text" placeholder="nome (requerido)" formControlName="nome" [ngClass]="{'is-invalid': displayMessage['nome'] }" />
+                      <span class="text-danger" *ngIf="displayMessage['nome']">
+                          <p [innerHTML]="displayMessage['nome']"></p>
+                      </span>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">Selecione um Nível</label>
+                <select class="form-control" id="nivelId" placeholder="Selecione um nível" formControlName="nivelId" [ngClass]="{'is-invalid': displayMessage['nivelId'] }">
+                    <option *ngFor="let nivel of niveis" value="{{ nivel.id }}">{{ nivel.nivel }}</option>
+                </select>
+                <span class="text-danger" *ngIf="displayMessage['nivelId']">
+                    <p [innerHTML]="displayMessage['nivelId']"></p>
+                </span>
+            </div>
+
+            <div class="form-group">
+              <div class="form-check form-check-inline">
+                 <input class="form-check-input" type="radio" formControlName="sexo" name="sexo" id="sexo" value="M">
+                 <label class="form-check-label" for="sexo">Masculino</label>
+              </div>
+              <div class="form-check form-check-inline">
+                 <input class="form-check-input" type="radio" formControlName="sexo" name="sexo" id="sexo" value="F">
+                 <label class="form-check-label" for="sexo">Feminino</label>
+              </div>
+              <span class="text-danger" *ngIf="displayMessage['sexo']">
+                <p [innerHTML]="displayMessage['sexo']"></p>
+              </span>
+           </div>
+
+           <div class="form-group">
+            <label class="control-label">Data Nascimento</label>
+            <div>
+                <input class="form-control" id="dataNascimento" type="date" placeholder="Data Nascimento (requerido)" formControlName="dataNascimento"
+                [ngClass]="{'is-invalid': displayMessage['dataNascimento'] }" (change)="calcularIdade()" (blur)="calcularIdade()" maxlength="8" />
+                <span class="text-danger" *ngIf="displayMessage['dataNascimento']">
+                    <p [innerHTML]="displayMessage['dataNascimento']"></p>
+                </span>
+            </div>
+           </div>
+
+           <div class="form-group">
+            <label class="control-label">Idade</label>
+            <div>
+                <input class="form-control" id="idade" type="text" placeholder="Idade" readonly formControlName="idade" />
+            </div>
+           </div>
+
+           <div class="form-group">
+            <label class="control-label">Hobby</label>
+            <div>
+                <input class="form-control" id="Hobby" type="text" placeholder="Hobby" formControlName="hobby"/>
+            </div>
+            </div>
+
+              <div class="form-group">
+                  <input type="submit" value="Cadastrar" class="btn btn-primary">&nbsp;
+                  <a class="btn btn-info" [routerLink]="[ '/desenvolvedor/listadesenvolvedor']">Voltar</a>
+              </div>
+
+          </form>
+      </div>
+  </div>
+</div>

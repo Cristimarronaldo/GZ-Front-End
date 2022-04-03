@@ -1,0 +1,28 @@
+<div class="container main-container">
+  <h3>Tem certeza que deseja excluir o Desenvolvedor {{ desenvolvedor.nome }} ?</h3>
+  <hr />
+
+  <div class="alert alert-danger" *ngIf="errors.length > 0">
+      <h3 id="msgRetorno">Opa! Ocorreu erro(s):</h3>
+      <ul>
+          <li *ngFor="let error of errors">{{ error }}</li>
+      </ul>
+  </div>
+
+  <dl class="row">
+      <dt class="col-sm-2">
+      <label class="control-label">Nível</label>
+  </dt>
+      <dd class="col-sm-10">
+          {{ desenvolvedor.nome }} - Nível: {{ desenvolvedor.nivel }}
+      </dd>
+
+
+  </dl>
+
+
+  <div>
+      <a class="btn btn-danger" href="javascript:void(0)" (click)="excluirNivel()">Excluir</a>&nbsp;
+      <a class="btn btn-info" [routerLink]="['/desenvolvedor/listadesenvolvedor']">Voltar</a>
+  </div>
+</div>
